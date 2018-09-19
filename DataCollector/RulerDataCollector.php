@@ -56,9 +56,15 @@ class RulerDataCollector implements DataCollectorInterface
      */
     private $ruler;
 
+    /**
+     * @var array
+     */
+    private $data;
+
     public function __construct(LoggedRuler $ruler)
     {
         $this->ruler = $ruler;
+        $this->data = [];
     }
 
     /**
@@ -112,6 +118,14 @@ class RulerDataCollector implements DataCollectorInterface
     public function getStatistics()
     {
         return $this->data['statistics'];
+    }
+
+    /**
+     * @inheritDoc
+     */
+    public function reset()
+    {
+        $this->data = [];
     }
 
     /**
